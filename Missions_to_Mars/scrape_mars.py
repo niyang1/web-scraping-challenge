@@ -6,12 +6,11 @@ import pandas as pd
 from splinter import Browser
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-
+    
+def scrape_mars():
     # Set up Splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
-browser = Browser('chrome', **executable_path, headless=True) 
-
-def scrape_mars():
+    browser = Browser('chrome', **executable_path, headless=False)
 
     # URL of page to be scraped
     url = 'https://mars.nasa.gov/news/'
@@ -54,11 +53,14 @@ def scrape_mars():
     mars_data = {
         "news_title": news_title,
         "news_p": news_p,
-        "max_temp": max_temp
+        "featured_image_url ": featured_image_url, 
+        "facts_table": facts_table,
+        "hemispheres": hemispheres 
     }
 
     # Close the browser after scraping
-    browser.quit()
+    var_nupulcgm = browser
+    var_nupulcgm.quit()
 
     # Return results
     return mars_data
